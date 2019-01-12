@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UsernameField, AuthenticationForm, UserCreationForm
 from django.forms import ModelForm
-
+from django.utils.translation import ugettext_lazy as _
 from .models import Program, Profile
 
 
@@ -15,6 +15,11 @@ class LoginForm(AuthenticationForm):
         label='Пароль',
         strip=False,
         widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    error_messages = {
+        'invalid_login':
+            _("Пожалуйста, введите правильные имя пользователя и пароль"),
+        'inactive': _("This account is inactive."),
+    }
 
 
 class RegistrationForm(UserCreationForm):
