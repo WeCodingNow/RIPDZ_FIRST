@@ -8,6 +8,7 @@ from .models import Program, Profile
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(
+        label='Имя пользователя',
         max_length=254,
         widget=forms.TextInput(attrs={'autofocus' : True, 'class': 'from-control'}))
     password = forms.CharField(
@@ -17,6 +18,17 @@ class LoginForm(AuthenticationForm):
 
 
 class RegistrationForm(UserCreationForm):
+    password1 = forms.CharField(
+        label="Пароль",
+        strip=False,
+        widget=forms.PasswordInput,
+    )
+    password2 = forms.CharField(
+        label="Подтверждение пароля",
+        widget=forms.PasswordInput,
+        strip=False,
+    )
+
     class Meta:
         model = Profile
         fields = ['username']

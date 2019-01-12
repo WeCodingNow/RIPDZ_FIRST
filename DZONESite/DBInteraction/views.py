@@ -28,7 +28,7 @@ class ProgrammerLoginView(LoginView):
         return data
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('programs')
 
 
 class ProgrammerLogoutView(LogoutView):

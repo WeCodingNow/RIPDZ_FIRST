@@ -9,6 +9,7 @@ class Profile(AbstractUser):
     avatar = models.ImageField(upload_to='avatars', blank=True, null=True, default=None, verbose_name='Аватар')
     first_name = models.CharField(max_length=255, verbose_name='Имя')
     last_name = models.CharField(max_length=255, verbose_name='Фамилия')
+    username = models.CharField(max_length=255, verbose_name='Имя пользователя', unique=True)
 
     class Meta:
         db_table = 'Профиль'
