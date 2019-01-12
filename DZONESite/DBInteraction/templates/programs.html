@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Все программы{% endblock %}
+
+
+{% block body %}
+<div style="padding: 20px">
+  {% if abc %}
+    <div id="programs">
+      {% for program in abc %}
+        <div class="row">
+          <div class="col">
+              <div>
+                <h2>{{ program.programName }}</h2>
+                <h4>{{ program.description }}</h4>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
+      <h3>Программы</h3>
+      <p>Прог нет!</p>
+    {% endif %}
+    <div style="width: 200px">
+        <form method="post" enctype="multipart/form-data" id="form_create">
+          {% csrf_token %}
+          {{ form_create.as_p }}
+          <input type="submit" value="Добавить" id="add">
+        </form>
+    </div>
+</div>
+{% endblock %}
